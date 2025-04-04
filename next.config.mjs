@@ -12,8 +12,10 @@ try {
 }
 
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
-  basePath: "/portfolio",
+  basePath: isProd ? "/portfolio" : "",
+  assetPrefix: isProd ? "/portfolio/" : "",
   output: "export", // enable static export
   eslint: {
     ignoreDuringBuilds: true,
